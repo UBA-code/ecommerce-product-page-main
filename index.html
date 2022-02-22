@@ -6,6 +6,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/all.min.css">
   
   <title>Frontend Mentor | E-commerce product page</title>
 
@@ -17,8 +18,8 @@
 </head>
 <body>
   <div class="black-layer"></div>
+  <header>
   <div class="container">
-    <header>
       <div class="logo-nav">
         <div class="nav-btn-open mobile-only">
           <img src="./images/icon-menu.svg" alt="">
@@ -45,9 +46,68 @@
           <img src="./images/image-avatar.png" alt="">
         </div>
       </div>
-    </header>
+    </div>
+  </header>
+  <div class="mobile-silder">
+    <div class="previous-btn"><img src="./images/icon-previous.svg" alt="icon"></div>
+    <div class="preview-img">
+      <div class="img-box">
+        <img src="./images/image-product-1.jpg" alt="product picture">
+      </div>
+      <div class="img-box">
+        <img src="./images/image-product-2.jpg" alt="product picture">
+      </div>
+      <div class="img-box">
+        <img src="./images/image-product-3.jpg" alt="product picture">
+      </div>
+      <div class="img-box">
+        <img src="./images/image-product-4.jpg" alt="product picture">
+      </div>
+    </div>
+    <div class="next-btn"><img src="./images/icon-next.svg" alt="icon"></div>
   </div>
-
+  <div class="container">
+    <section>
+      <div class="slider-area only-desktop-and-tablette">
+        <div class="preview-img">
+          <img src="./images/image-product-1.jpg" alt="">
+        </div>
+        <div class="images-container">
+          <div class="img-box slected-image">
+          <img src="./images/image-product-1-thumbnail.jpg" alt="">
+          </div>
+          <div class="img-box">
+            <img src="./images/image-product-2-thumbnail.jpg" alt="">
+          </div>
+          <div class="img-box">
+            <img src="./images/image-product-3-thumbnail.jpg" alt="">
+          </div>
+          <div class="img-box">
+            <img src="./images/image-product-4-thumbnail.jpg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="element-info">
+        <div class="company-name">Sneaker Company</div>
+        <h1 class="product-title">Fall Limited Edition Sneakers</h1>
+        <p class="product-info">
+          These low-profile sneakers are your perfect casual wear companion. Featuring a 
+          durable rubber outer sole, they’ll withstand everything the weather can offer.
+        </p>
+        <h2 class="product-price">$125.00</h2>
+        <h5 class="product-Previous-price">$250.00</h5>
+        <div class="stock-and-add-cart">
+          <div class="stock">
+            <img src="./images/icon-minus.svg" alt="minus"><p>0</p><img src="./images/icon-plus.svg" alt="plus">
+          </div>
+          <div class="add-cart">
+            <span><img src="./images/icon-cart.svg" alt="cart"></span>
+            <span>Add to cart</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- Collections
   Men

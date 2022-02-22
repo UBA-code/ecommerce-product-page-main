@@ -40,14 +40,18 @@ body {
 }
 
 header {
+  background-color: #fff;
+}
+header .container{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 0;
+  padding-top: 25px;
+  padding-bottom: 25px;
   position: relative;
 }
 
-header::before {
+header .container::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -82,9 +86,9 @@ header .logo-nav nav {
   display: none;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .black-layer {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -96,17 +100,18 @@ header .logo-nav nav {
   .layer-active {
     background-color: var(--Black);
     z-index: 999;
+    position: fixed;
   }
   header .logo-nav nav {
-    position: absolute;
+    position: fixed;
     margin: 0 !important;
     height: 100vh;
     width: 70%;
     top: 0;
-    left: -39px;
+    left: 0;
     background-color: var(--White);
     transform: translateX(-100%);
-    transition: 0.2s ease-in-out transform;
+    transition: 0.3s ease-in-out transform;
     z-index: 9999;
   }
   .active {
@@ -144,7 +149,6 @@ header .logo-nav nav {
     width: fit-content;
   }
 }
-
 header .logo-nav nav ul li a {
   font-size: 14px;
   color: var(--Dark-grayish-blue);
@@ -194,6 +198,12 @@ header .logo-nav nav ul li:not(:last-child) a {
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .profile-pic img {
+    width: 25px;
+  }
+}
+
 .profile-pic img:hover {
   border: 2px solid var(--orange);
   border-radius: 50%;
@@ -206,4 +216,207 @@ header .logo-nav nav ul li:not(:last-child) a {
 .cart a:hover img {
   filter: invert(0) sepia(16) saturate(641%) hue-rotate(179deg) brightness(0%)
     contrast(64%);
+}
+
+section {
+  display: flex;
+  margin-top: 80px;
+  justify-content: space-between;
+}
+
+section .slider-area .preview-img img {
+  width: 85%;
+  border-radius: 15px;
+}
+
+section .slider-area .images-container {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+section .slider-area .images-container img {
+  width: 100%;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out opacity;
+}
+section .slider-area .images-container img:hover {
+  opacity: 0.6;
+}
+section .slider-area .images-container .img-box {
+  width: calc(80% / 4);
+  cursor: pointer;
+}
+
+section .slider-area .images-container .slected-image {
+  position: relative;
+}
+
+section .slider-area .images-container .slected-image::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 95%;
+  top: -2px;
+  left: -2px;
+  background-color: #ffffffc2;
+  border: 2px solid var(--orange);
+  border-radius: 15px;
+}
+
+section .element-info {
+  margin: 40px 0 0 40px;
+}
+section .element-info .company-name {
+  font-size: 13px;
+  color: var(--orange);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+section .element-info .product-title {
+  margin-top: 10px;
+  font-size: 30px;
+  color: var(--Very-vark-blue);
+  margin-bottom: 30px;
+}
+
+section .element-info .product-info {
+  color: var(--Dark-grayish-blue);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 850px;
+}
+
+section .element-info .product-price {
+  color: var(--Very-vark-blue);
+  position: relative;
+  width: fit-content;
+  margin-bottom: 5px;
+}
+
+section .element-info .product-price::before {
+  content: "50%";
+  position: absolute;
+  top: 0;
+  right: -50px;
+  background-color: var(--pale-orange);
+  font-size: 14px;
+  color: var(--orange);
+  padding: 3px 5px;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+section .element-info .product-Previous-price {
+  width: fit-content;
+  color: var(--Grayish-blue);
+  text-decoration: line-through;
+}
+
+section .element-info .stock-and-add-cart {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+section .element-info .stock-and-add-cart .stock {
+  padding: 10px 10px;
+  background-color: var(--Light-grayish-blue);
+  width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+section .element-info .stock-and-add-cart .stock img {
+  transition: 0.3s ease-in-out opacity;
+  cursor: pointer;
+}
+section .element-info .stock-and-add-cart .add-cart {
+  display: flex;
+  align-items: center;
+  width: 63%;
+  justify-content: center;
+  background-color: var(--orange);
+  border-radius: 7px;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.3s ease-in-out;
+  transition-property: opacity, box-shadow;
+  cursor: pointer;
+}
+
+section .element-info .stock-and-add-cart .add-cart:hover {
+  opacity: 0.7;
+  box-shadow: 0px 10px 35px -12px var(--orange);
+}
+
+section .element-info .stock-and-add-cart .add-cart span img {
+  width: 16px;
+  filter: invert(99%) sepia(0%) saturate(0%) hue-rotate(73deg) brightness(210%)
+    contrast(133%);
+}
+
+section .element-info .stock-and-add-cart .add-cart span:nth-child(2) {
+  margin-left: 15px;
+}
+
+section .element-info .stock-and-add-cart .stock img:hover {
+  opacity: 0.5;
+}
+
+.mobile-silder {
+  display: none;
+}
+
+/* style slider for small ecran */
+
+@media screen and (max-width: 768px) {
+  .only-desktop-and-tablette {
+    display: none;
+  }
+  .mobile-silder {
+    display: block;
+    transform: translateY(-10%);
+    position: relative;
+    z-index: -1;
+  }
+  .mobile-silder .preview-img {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+  }
+  .mobile-silder .preview-img .img-box img {
+    width: 100vw;
+  }
+  .mobile-silder .previous-btn,
+  .mobile-silder .next-btn {
+    position: absolute;
+    top: 50%;
+    background-color: white;
+    width: 5%;
+    height: 5%;
+    border-radius: 50%;
+    padding: 20px;
+  }
+  .mobile-silder .previous-btn {
+    left: 5%;
+  }
+  .mobile-silder .next-btn {
+    right: 5%;
+  }
+  .mobile-silder .previous-btn img {
+    width: 10px;
+    transform: translate(-65%, -50%);
+  }
+  .mobile-silder .next-btn img {
+    width: 10px;
+    transform: translate(-35%, -60%);
+  }
 }

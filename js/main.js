@@ -21,9 +21,9 @@ mobileOnly.forEach((e) => {
   });
 });
 
-navLayer.addEventListener("click", e=> {
+navLayer.addEventListener("click", (e) => {
   if (e.target.classList.contains("layer-active")) {
-    e.target.classList.remove("layer-active")
+    e.target.classList.remove("layer-active");
     nav.classList.remove("active");
   }
-})
+});
