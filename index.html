@@ -17,7 +17,7 @@
   </style> -->
 </head>
 <body>
-  <div class="black-layer"></div>
+  <div class="black-layer layer-active"></div>
   <header>
   <div class="container">
       <div class="logo-nav">
@@ -48,23 +48,25 @@
       </div>
     </div>
   </header>
-  <div class="mobile-silder">
-    <div class="previous-btn"><img src="./images/icon-previous.svg" alt="icon"></div>
-    <div class="preview-img">
-      <div class="img-box">
-        <img src="./images/image-product-1.jpg" alt="product picture">
+  <div class="mobile-slider-box">
+    <div class="mobile-silder">
+      <div class="previous-btn"><img src="./images/icon-previous.svg" alt="icon"></div>
+      <div class="preview-img">
+        <div class="img-box">
+          <img src="./images/image-product-1.jpg" alt="product picture">
+        </div>
+        <div class="img-box">
+          <img src="./images/image-product-2.jpg" alt="product picture">
+        </div>
+        <div class="img-box">
+          <img src="./images/image-product-3.jpg" alt="product picture">
+        </div>
+        <div class="img-box">
+          <img src="./images/image-product-4.jpg" alt="product picture">
+        </div>
       </div>
-      <div class="img-box">
-        <img src="./images/image-product-2.jpg" alt="product picture">
-      </div>
-      <div class="img-box">
-        <img src="./images/image-product-3.jpg" alt="product picture">
-      </div>
-      <div class="img-box">
-        <img src="./images/image-product-4.jpg" alt="product picture">
-      </div>
+      <div class="next-btn"><img src="./images/icon-next.svg" alt="icon"></div>
     </div>
-    <div class="next-btn"><img src="./images/icon-next.svg" alt="icon"></div>
   </div>
   <div class="container">
     <section>
@@ -74,16 +76,16 @@
         </div>
         <div class="images-container">
           <div class="img-box slected-image">
-          <img src="./images/image-product-1-thumbnail.jpg" alt="">
+            <img src="./images/image-product-1-thumbnail.jpg" data-src="../images/image-product-1.jpg" alt="">
           </div>
           <div class="img-box">
-            <img src="./images/image-product-2-thumbnail.jpg" alt="">
+            <img src="./images/image-product-2-thumbnail.jpg" data-src="../images/image-product-2.jpg" alt="">
           </div>
           <div class="img-box">
-            <img src="./images/image-product-3-thumbnail.jpg" alt="">
+            <img src="./images/image-product-3-thumbnail.jpg" data-src="../images/image-product-3.jpg" alt="">
           </div>
           <div class="img-box">
-            <img src="./images/image-product-4-thumbnail.jpg" alt="">
+            <img src="./images/image-product-4-thumbnail.jpg" data-src="../images/image-product-4.jpg" alt="">
           </div>
         </div>
       </div>
@@ -94,8 +96,10 @@
           These low-profile sneakers are your perfect casual wear companion. Featuring a 
           durable rubber outer sole, they’ll withstand everything the weather can offer.
         </p>
-        <h2 class="product-price">$125.00</h2>
+        <div class="price-box">
+          <h2 class="product-price">$125.00</h2>
         <h5 class="product-Previous-price">$250.00</h5>
+        </div>
         <div class="stock-and-add-cart">
           <div class="stock">
             <img src="./images/icon-minus.svg" alt="minus"><p>0</p><img src="./images/icon-plus.svg" alt="plus">
@@ -108,7 +112,35 @@
       </div>
     </section>
   </div>
-
+  <div class="slider-preview only-desktop-and-tablette ">
+    <div class="slider-close">
+      <img src="./images/icon-close.svg" alt="">
+    </div>
+    <div class="preview-img">
+      <div class="previous-btn">
+        <img src="./images/icon-previous.svg" alt="">
+      </div>
+      <img class="preview-img-Element"  src="./images/image-product-1.jpg" alt="">
+      <div class="next-btn">
+        <img src="./images/icon-next.svg" alt="">
+      </div>
+    </div>
+    <div class="images-container">
+      <div class="img-box slected-image">
+        <img src="./images/image-product-1-thumbnail.jpg" data-src="../images/image-product-1.jpg" alt="">
+      </div>
+      <div class="img-box">
+        <img src="./images/image-product-2-thumbnail.jpg" data-src="../images/image-product-2.jpg" alt="">
+      </div>
+      <div class="img-box">
+        <img src="./images/image-product-3-thumbnail.jpg" data-src="../images/image-product-3.jpg" alt="">
+      </div>
+      <div class="img-box">
+        <img src="./images/image-product-4-thumbnail.jpg" data-src="../images/image-product-4.jpg" alt="">
+      </div>
+    </div>
+    
+  </div>
   <!-- Collections
   Men
   Women
