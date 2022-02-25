@@ -167,3 +167,41 @@ sliderPreview.addEventListener("click", (e) => {
     }
   }
 });
+
+// stock add and remove
+
+let stockArea = document.querySelector(".stock-and-add-cart");
+
+stockArea.addEventListener("click", (e) => {
+  if (e.target.classList.contains("minus-btn")) {
+    if (stockArea.querySelector(".stock-length").innerHTML > 0) {
+      stockArea.querySelector(".stock-length").innerHTML--;
+    }
+  }
+  if (e.target.classList.contains("plus-btn")) {
+    stockArea.querySelector(".stock-length").innerHTML++;
+  }
+  if (e.target.classList.contains("add-cart")) {
+    addToCart();
+    stockArea.querySelector(".stock-length").innerHTML = "0"
+  }
+});
+
+// get Prouct information
+let productName = document.querySelector(
+    ".element-info .product-title"
+  ).innerHTML,
+  productPrice = document.querySelector(
+    ".element-info .product-price"
+  ).innerHTML;
+
+let stockArray = [];
+
+function addToCart() {
+  stockArray.push({
+    name: productName,
+    price: productPrice,
+    stockSize: stockArea.querySelector(".stock-length").innerHTML,
+  });
+  window.localStorage.stock = JSON.stringify(stockArray)
+}
