@@ -760,8 +760,7 @@ header .cart-preview .cart-empty-active {
   display: block !important;
 }
 
-
-.cart-profile .cart .cart-length{
+.cart-profile .cart .cart-length {
   cursor: alias;
   position: absolute;
   top: -8px;
