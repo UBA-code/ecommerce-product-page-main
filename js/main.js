@@ -1,3 +1,13 @@
+let stockArray = [];
+
+if (window.localStorage.stock) {
+  getItemsFromLocalStorage();
+}
+
+if (stockArray.length === 0) {
+  window.localStorage.clear();
+}
+
 let mobileOnly = document.querySelectorAll(".mobile-only"),
   nav = document.querySelector("header .logo-nav nav"),
   navLayer = document.querySelector(".black-layer");
@@ -89,7 +99,9 @@ imagesContainer.addEventListener("click", (x) => {
 
 // slider for desktop
 
-let imagePreview = document.querySelector("section .slider-area .preview-img"),
+let imagePreview = document.querySelector(
+    "section .slider-area .preview-img img"
+  ),
   sliderPreview = document.querySelector(".slider-preview");
 
 imagePreview.addEventListener("click", (_) => {
@@ -182,8 +194,13 @@ stockArea.addEventListener("click", (e) => {
     stockArea.querySelector(".stock-length").innerHTML++;
   }
   if (e.target.classList.contains("add-cart")) {
-    addToCart();
-    stockArea.querySelector(".stock-length").innerHTML = "0"
+    if (+stockArea.querySelector(".stock-length").innerHTML > 0) {
+      addToCart();
+      updateCartWhileAdding();
+      stockArea.querySelector(".stock-length").innerHTML = "0";
+      removeProduct();
+      showCheckOutBtn();
+    }
   }
 });
 
@@ -192,16 +209,123 @@ let productName = document.querySelector(
     ".element-info .product-title"
   ).innerHTML,
   productPrice = document.querySelector(
-    ".element-info .product-price"
-  ).innerHTML;
-
-let stockArray = [];
+    ".element-info .product-price .price"
+  ).innerHTML,
+  productImg = document.querySelector("section .slider-area .preview-img img");
 
 function addToCart() {
+  // getItemsFromLocalStorage()
+  let id = Date.now();
   stockArray.push({
+    productImg: productImg.dataset.src,
     name: productName,
     price: productPrice,
     stockSize: stockArea.querySelector(".stock-length").innerHTML,
+    productId: id,
   });
-  window.localStorage.stock = JSON.stringify(stockArray)
+  window.localStorage.stock = JSON.stringify(stockArray);
 }
+
+function getItemsFromLocalStorage() {
+  stockArray = JSON.parse(window.localStorage.stock);
+}
+
+let cartAndProfileBox = document.querySelector(".cart-profile"),
+  cartPreview = document.querySelector(".cart-profile .cart-preview");
+
+cartAndProfileBox.addEventListener("click", (e) => {
+  if (e.target.classList.contains("cart-icon")) {
+    cartPreview.classList.toggle("cart-active");
+  }
+});
+
+// get items from local storage
+
+function showCartProduct() {
+  let cartPreview = document.querySelector(
+    ".cart-profile .cart-preview .product-box"
+  );
+  for (let i = 0; i < stockArray.length; i++) {
+    let productArea = `
+      <div class="product-area" data-id="${stockArray[i].productId}">
+        <div class="img">
+          <img src="${stockArray[i].productImg}" alt="">
+        </div>  
+        <div class="product-info">
+          <p class="product-title">${stockArray[i].name}</p>
+          <div class="price-area">
+            <span class="price">$${
+              stockArray[i].price
+            }</span> &#10005; <span class="Stock-Size">${
+      stockArray[i].stockSize
+    }</span> <span class="final-price">$${(
+      stockArray[i].price * stockArray[i].stockSize
+    ).toFixed(2)}</span>
+          </div>
+        </div>  
+        <div class="remove-product-btn">
+          <img src="./images/icon-delete.svg" alt="">
+        </div>
+      </div>
+      `;
+    cartPreview.innerHTML += productArea;
+  }
+}
+
+showCartProduct();
+
+function updateCartWhileAdding() {
+  let productBox = document.querySelectorAll(
+    ".cart-preview .product-box .product-area"
+  );
+  productBox.forEach((e) => e.remove());
+  showCartProduct();
+}
+
+// remove product from cart
+
+function removeProduct() {
+  let removeBtn = document.querySelectorAll(".remove-product-btn");
+
+  removeBtn.forEach((z) => {
+    z.addEventListener("click", (e) => {
+      if (e.target.classList.contains("remove-product-btn")) {
+        // remove product from local storage
+        stockArray = stockArray.filter(
+          (x) => x.productId != +e.target.parentElement.dataset.id
+        );
+        window.localStorage.stock = JSON.stringify(stockArray);
+        // remove product from page
+        e.target.parentElement.remove();
+        showCheckOutBtn();
+      }
+    });
+  });
+}
+
+removeProduct();
+
+function showCheckOutBtn() {
+  let productBox = document.querySelector(".product-box"),
+    checkoutBtn = document.querySelector(".checkout-btn"),
+    cartLength = document.querySelector(".cart-profile .cart .cart-length");
+  if (productBox.children.length === 0) {
+    checkoutBtn.style.display = "none";
+    let cartEmpty = document.createElement("span");
+    cartEmpty.innerHTML = "Your cart is empty.";
+    cartEmpty.classList.add("cart-empty");
+    cartEmpty.classList.add("cart-empty-active");
+    cartPreview.appendChild(cartEmpty);
+    cartLength.style.display = "none";
+  } else {
+    cartLength.style.display = "block";
+    cartLength.innerHTML = stockArray.length;
+    let cartEmpty = document.querySelector(".cart-empty");
+    if (cartEmpty) {
+      cartEmpty.remove();
+    }
+    checkoutBtn.style.display = "block";
+  }
+}
+
+showCheckOutBtn();

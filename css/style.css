@@ -189,10 +189,12 @@ header .logo-nav nav ul li:not(:last-child) a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .cart-profile .cart {
   margin-right: 30px;
+  position: relative;
 }
 
 .profile-pic img {
@@ -210,12 +212,13 @@ header .logo-nav nav ul li:not(:last-child) a {
   border: 2px solid var(--orange);
   border-radius: 50%;
 }
-.cart a img {
+.cart img {
   width: 20px;
   transition: 0.3s ease-in-out filter;
+  cursor: pointer;
 }
 
-.cart a:hover img {
+.cart img:hover {
   filter: invert(0) sepia(16) saturate(641%) hue-rotate(179deg) brightness(0%)
     contrast(64%);
 }
@@ -596,4 +599,179 @@ section .element-info .stock-and-add-cart .stock img:hover {
 
 .sliderActive {
   visibility: visible;
+}
+
+/* style cart */
+
+header .cart-preview {
+  position: absolute;
+  top: 56px;
+  left: -150px;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  box-shadow: 0 0 42px -14px black;
+  border-radius: 5px;
+  overflow-y: scroll;
+  opacity: 0;
+  z-index: -100;
+}
+
+/* style cart for mobile and tablette  */
+
+@media screen and (max-width: 414px) {
+  header {
+    position: relative;
+  }
+  .cart-profile {
+    position: static;
+  }
+  header .cart-preview {
+    top: 90px;
+    left: 8px;
+    width: 96vw;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 415px) and (max-width: 768px) {
+  header {
+    position: static;
+  }
+  .cart-profile {
+    position: relative;
+  }
+  header .cart-preview {
+    top: 70px;
+    right: 0;
+    width: 300px;
+    height: 200px;
+    transform: translateX(-25%);
+  }
+}
+
+header .cart-preview::-webkit-scrollbar {
+  width: 5px;
+}
+
+header .cart-preview::-webkit-scrollbar-thumb {
+  background-color: var(--orange);
+  border-radius: 10px;
+}
+
+header .cart-preview .product-area .img img {
+  width: 40px;
+  border-radius: 4px;
+}
+
+header .cart-preview .product-area {
+  display: flex;
+  margin: 20px 0;
+  padding: 0 20px;
+  justify-content: space-between;
+}
+
+header .cart-preview .cart-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--Very-vark-blue);
+  padding: 20px 15px;
+}
+
+hr.cart-line {
+  border-top: 0;
+  border-bottom: 1px solid var(--Grayish-blue);
+}
+
+header .cart-preview .product-area .product-info .product-title {
+  color: var(--Dark-grayish-blue);
+  font-size: 14px;
+}
+
+header .cart-preview .product-area .product-info .price-area {
+  font-size: 14px;
+  color: var(--Dark-grayish-blue);
+}
+
+header .cart-preview .product-area .remove-product-btn {
+  margin-top: 10px;
+  transition: 0.3s ease-in-out filter;
+  cursor: pointer;
+  position: relative;
+}
+header .cart-preview .product-area .remove-product-btn:hover {
+  filter: invert(0) sepia(16) saturate(641%) hue-rotate(179deg) brightness(0%)
+    contrast(64%);
+}
+
+header .cart-preview .product-area .remove-product-btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+header .cart-preview .product-area .remove-product-btn img {
+  width: 10px;
+}
+
+header .cart-preview .product-area .price-area .final-price {
+  font-weight: 600;
+  color: var(--Very-vark-blue);
+  margin-left: 5px;
+}
+
+header .cart-preview .checkout-btn {
+  text-align: center;
+  background-color: var(--orange);
+  padding: 13px 0;
+  margin: 20px;
+  border-radius: 8px;
+  color: var(--White);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  transition-property: opacity, background-color;
+}
+
+header .cart-preview .checkout-btn:hover {
+  opacity: 0.7;
+}
+
+.cart-active {
+  opacity: 1 !important;
+  z-index: 99 !important;
+}
+
+header .cart-preview .cart-empty {
+  font-size: 14px;
+  color: var(--Dark-grayish-blue);
+  font-weight: 700;
+  position: absolute;
+  top: 58%;
+  left: 30%;
+  display: none;
+}
+
+header .cart-preview .cart-empty-active {
+  display: block !important;
+}
+
+
+.cart-profile .cart .cart-length{
+  cursor: alias;
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  width: 17px;
+  height: 13px;
+  text-align: center;
+  background-color: var(--orange);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--White);
+  border-radius: 6px;
 }
